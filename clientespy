@@ -1,0 +1,22 @@
+import psycopg2
+
+# Server information
+connetion = psycopg2.connect(
+    host = "clientessalao1-mr-b2e4.g.aivencloud.com"
+    user = "avnadmin"
+    password =
+    database = 
+    )
+
+# cursor
+cursor = connection.cursor()
+
+#sql commands
+
+sql = "INSERT INTO clientes (name, phone) VALUES (%s, %s)"
+
+name
+phone
+values = (name, phone )
+
+cursor.execute(sql, values)
