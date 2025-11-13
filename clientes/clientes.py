@@ -5,35 +5,40 @@ from dotenv import load_dotenv
 # Loads environment variables of .env file
 load_dotenv()
 
-# Costumer registration funcion
-def costumer_record(connection):
+# Custumer registration funcion
+def custumer_record(connection):
     # cursor
     with connection.cursor() as cursor:
 
         # Variables
         while True:
+            # DDD validation
             ddd = input("DDD: ")
             if ddd.isdigit() and len(ddd) == 2:
                 break
+            print("DDD inválido! Tente novamente.")
+
         while True:
+            # Number validation
             number = input("Número: ")
             if number.isdigit() and 8 <= len(number) <= 9:
                 break
+            print("Número inválido! Tente novamente.")
 
         phone = ddd + number 
 
-        name = input("Nome: ")
+        name = input("Nome: ").strip().title()
 
         values = (name, phone)
 
         # SQL commands
         sql = "INSERT INTO clientes (name, phone) VALUES (%s, %s)"
 
-
+        # Execute and confirm the SQL command
         cursor.execute(sql, values)
         connection.commit()
 
-        print("Cliente cadastrado com sucesso!")
+        print(f"Cliente '{name}' cadastrado com sucesso!")
 
 # Main
  
@@ -47,7 +52,7 @@ try:
         password=os.getenv("DB_PASSWORD"),
         sslmode=os.getenv("DB_SSLMODE") 
     )as connection:
-    print("Connection seccessfully!")
+        print("Conexão bem sucedida!")
 
         costumer_record(connection)
 
