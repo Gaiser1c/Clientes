@@ -1,0 +1,27 @@
+# Ambiente virtual
+.venv/
+
+# Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# VSCode
+.vscode/
+.history/
+
+# Arquivos de banco / temporários
+*.db
+*.sqlite3
+
+# Arquivos de log
+*.log
+
+# Arquivos de ambiente
+.env
+*.env
+
+# Pastas de build
+build/
+dist/
+
